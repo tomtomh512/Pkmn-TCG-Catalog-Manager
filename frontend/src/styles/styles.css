@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    font-family: "Karla", sans-serif;
+    background-color: darkslategray;
+}
+
+input {
+    font-family: "Karla", sans-serif;
+}
+
+.main-split {
+    display: flex;
+    font-size: 15pt;
+}
+
+@media (max-width: 768px) {
+    .main-split, nav {
+        flex-direction: column;
+    }
+}

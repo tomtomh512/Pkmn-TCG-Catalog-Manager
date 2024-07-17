@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    font-family: "Karla", sans-serif;
+    background-color: darkslategray;
+}
+
+input {
+    font-family: "Karla", sans-serif;
+}
+
+nav {
+    display: flex;
+    background-color: #21222A;
+    color: white;
+    font-size: 25pt;
+}
+
+nav > div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.navbar-left {
+    justify-content: left;
+}
+
+.navbar-left > img {
+    height: 48px;
+    margin-right: 10px;
+}
+
+.navbar-right {
+    justify-content: right;
+}
+
+.navbar-right > input {
+    font-weight: bold;
+    font-size: 15pt;
+    -webkit-appearance: none;
+    border: 2px black solid;
+    border-radius: 10px;
+    padding: 8px;
+    margin: 0 10px;
+}
+
+.navbar-right > input:hover {
+    background-color: #d0d0d0;
+}
+
+.navbar-right > input:active {
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+
+    .navbar-right {
+        padding: 30px;
+    }
+}

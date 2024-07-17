@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    font-family: "Karla", sans-serif;
+    background-color: darkslategray;
+}
+
+input {
+    font-family: "Karla", sans-serif;
+}
+
+.main-listing-container {
+    background-color: darkslategrey;
+    color: white;
+}
+
+.list-head, .page-selector, p {
+    font-size: 18pt;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px 20px;
+}
+
+p {
+    padding: 0;
+}
+
+.list-head {
+    display: flex;
+}
+
+.left-head {
+    flex: 1;
+    text-align: left;
+    margin-left: 30px;
+}
+
+.right-head{
+    flex: 1;
+    text-align: right;
+    margin-right: 30px;
+}
+
+.select-sort, .list-inputs {
+    color: white;
+    font-size: 15pt;
+    font-weight: bold;
+    margin: 5px 15px;
+    background-color: darkslategrey;
+    border-radius: 10px;
+    border: 2px solid white;
+}
+
+.listing-container {
+    padding: 0 30px 30px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.listing-container > div > section > span {
+    font-size: 15pt;
+    font-weight: bold;
+}
+
+.listing-container > div {
+    background-color: lightslategrey;
+    width: 215px;
+    margin: 15px;
+    padding-bottom: 15px;
+    border-radius: 30px 30px 10px 10px;
+    font-size: 15pt;
+    transition: 0.5s;
+}
+
+.listing-container > div:hover {
+    transform: translateY(-15px);
+}
+
+.listing-container > div > img {
+    width: 100%;
+}
+
+.listing-container > div > section {
+    padding: 10px 10px 0 10px;
+}
+
+.page-selector {
+    padding-bottom: 50px;
+}
+
+.select-sort {
+    width: 100px;
+}
+
+.list-inputs {
+    width: 200px;
+}
+
+.list-inputs:hover {
+    background-color: #243d3d;
+}
+
+.list-inputs:active {
+    background-color: darkslategrey;
+}
