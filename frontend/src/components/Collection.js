@@ -169,7 +169,7 @@ export default function Collection(props) {
 
             <div className="listing-container">
                 {!loading ? (
-                    listDataElements.length > 0 ? listDataElements : <p> Add cards to your collection from the catalog </p>
+                    listDataElements ? listDataElements : <p> Add cards to your collection from the catalog </p>
                 ) : (
                     <p> Loading... </p>
                 )}
