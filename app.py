@@ -30,10 +30,11 @@ def initialize_database():
 
 initialize_database()
 
-@app.route('/log_in', methods=['GET'])
+@app.route('/log_in', methods=['POST'])
 def log_in():
-    username = request.args.get('username')
-    password = request.args.get('password')
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
 
     conn = sqlite3.connect('users.db')
     c = conn.cursor()
@@ -55,7 +56,7 @@ def log_in():
     user_id = user[0]
 
     conn.close()
-    return jsonify({"message": "User log in successfully", "user_id": user_id}), 200
+    return jsonify({"message": "User log in successful", "user_id": user_id}), 200
 
 
 @app.route('/sign_up', methods=['POST'])
@@ -107,13 +108,14 @@ def add_pkmn():
 
 @app.route('/get_pkmn', methods=['GET'])
 def get_pkmn():
-    user_id = request.args.get('user_id')
-    cardName = request.args.get('cardName')
-    setName = request.args.get('setName')
-    artist = request.args.get('artist')
-    releaseDate = request.args.get('releaseDate')
-    sortMethod = request.args.get('sortMethod')
-    pageNumber = int(request.args.get('pageNumber'))
+    data = request.args
+    user_id = data.get('user_id')
+    cardName = data.get('cardName')
+    setName = data.get('setName')
+    artist = data.get('artist')
+    releaseDate = data.get('releaseDate')
+    sortMethod = data.get('sortMethod')
+    pageNumber = int(data.get('pageNumber'))
 
     conn = sqlite3.connect('users.db')
     c = conn.cursor()

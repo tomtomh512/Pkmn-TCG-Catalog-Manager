@@ -1,6 +1,7 @@
 <h1> Pokémon TCG Catalog / Manager </h1>
 
-Built with: React, Flask, and SQLite
+Frontend: React <br>
+Backend: Flask, SQLite
 
 <h2> Future implementation goals </h2>
 <li> Sort collection by price </li>
