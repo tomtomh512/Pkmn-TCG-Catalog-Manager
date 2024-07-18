@@ -30,11 +30,10 @@ def initialize_database():
 
 initialize_database()
 
-@app.route('/log_in', methods=['POST'])
+@app.route('/log_in', methods=['GET'])
 def log_in():
-    data = request.get_json()
-    username = data.get('username')
-    password = data.get('password')
+    username = request.args.get('username')
+    password = request.args.get('password')
 
     conn = sqlite3.connect('users.db')
     c = conn.cursor()
@@ -45,13 +44,13 @@ def log_in():
     # if no matches
     if user is None:
         conn.close()
-        return jsonify({"message": "Incorrect username or password"}), 400
+        return jsonify({"message": "No username found"}), 400
 
     # incorrect password
     stored_password = user[2]
     if (password != stored_password):
         conn.close()
-        return jsonify({"message": "Incorrect username or password"}), 400
+        return jsonify({"message": "Incorrect password"}), 400
 
     user_id = user[0]
 

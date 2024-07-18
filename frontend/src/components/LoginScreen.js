@@ -56,19 +56,16 @@ export default function LoginScreen(props) {
                     }
                 })
         } else {
-            fetch("/log_in", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    username: formData.username,
-                    password: formData.password,
-                }),
-            })
+
+            const queryParams = new URLSearchParams({
+                username: formData.username || '',
+                password: formData.password || '',
+            }).toString()
+
+            fetch(`/log_in?${queryParams}`)
                 .then(res => res.json())
                 .then(data => {
-                    if (data.message !== "Incorrect username or password") {
+                    if (data.message === "User log in successfully") {
                         handleLogIn(formData.username, data.user_id)
                         closeLogIn()
                     } else {
