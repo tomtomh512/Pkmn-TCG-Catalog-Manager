@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from datetime import datetime
+import bcrypt
 import sqlite3
 
 app = Flask(__name__)
@@ -10,8 +11,8 @@ def initialize_database():
 
     c.execute('''CREATE TABLE IF NOT EXISTS users
                  (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                 username TEXT NOT NULL,
-                 password TEXT NOT NULL)''')
+                 username TEXT NOT NULL UNIQUE,
+                 password_hash BLOB NOT NULL)''')
 
     c.execute('''CREATE TABLE IF NOT EXISTS collection
                  (id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -47,9 +48,9 @@ def log_in():
         conn.close()
         return jsonify({"message": "No username found"}), 400
 
-    # incorrect password
-    stored_password = user[2]
-    if (password != stored_password):
+    # verify password hash
+    stored_password_hash = user[2]
+    if not bcrypt.checkpw(password.encode('utf-8'), stored_password_hash):
         conn.close()
         return jsonify({"message": "Incorrect password"}), 400
 
@@ -75,7 +76,10 @@ def sign_up():
         conn.close()
         return jsonify({"message": "Username is already taken"}), 400
 
-    c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, password))
+    # generate password hash
+    password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+    c.execute("INSERT INTO users (username, password_hash) VALUES (?, ?)", (username, password_hash))
     conn.commit()
     conn.close()
 
