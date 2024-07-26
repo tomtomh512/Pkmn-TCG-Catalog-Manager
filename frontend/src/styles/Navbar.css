@@ -16,7 +16,6 @@ nav {
 }
 
 nav > div {
-    flex: 1;
     display: flex;
     align-items: center;
     padding: 0 30px;
@@ -24,6 +23,7 @@ nav > div {
 
 .navbar-left {
     justify-content: left;
+    flex: 2;
 }
 
 .navbar-left > img {
@@ -33,6 +33,7 @@ nav > div {
 
 .navbar-right {
     justify-content: right;
+    flex: 1;
 }
 
 .navbar-right > input {

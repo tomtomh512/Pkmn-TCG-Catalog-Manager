@@ -5,6 +5,7 @@ import Featurebox from "./components/Featurebox"
 import Listings from "./components/Listings"
 import Collection from "./components/Collection"
 import LoginScreen from "./components/LoginScreen";
+import Footer from "./components/Footer";
 
 export default function App() {
     const [userInput, setUserInput] = useState({
@@ -110,6 +111,7 @@ export default function App() {
                 collectionRefresh={collectionRefresh}
             />
         )}
+        <Footer />
     </div>
   );
 }

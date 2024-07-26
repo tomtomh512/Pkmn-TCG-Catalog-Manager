@@ -1,0 +1,11 @@
+.footer {
+    background-color: #21222A;
+    color: white;
+    font-size: 16pt;
+    text-align: center;
+    padding: 30px;
+}
+
+.footer > a {
+    color: white;
+}
