@@ -147,18 +147,18 @@ def get_pkmn():
     totalCount = c.fetchone()[0]
 
     # Sorting
-    if sortMethod == '↑ Name':
-        query += " ORDER BY name ASC"
-    elif sortMethod == '↓ Name':
-        query += " ORDER BY name DESC"
-    elif sortMethod == '↑ Date Added':
-        query += " ORDER BY timeAdded ASC"
-    elif sortMethod == '↓ Date Added':
-        query += " ORDER BY timeAdded DESC"
-    elif sortMethod == 'Oldest':
-        query += " ORDER BY releaseDate ASC"
-    elif sortMethod == 'Newest':
-        query += " ORDER BY releaseDate DESC"
+    sort_mapping = {
+        '↑ Name': " ORDER BY name ASC",
+        '↓ Name': " ORDER BY name DESC",
+        '↑ Date Added': " ORDER BY timeAdded ASC",
+        '↓ Date Added': " ORDER BY timeAdded DESC",
+        'Oldest': " ORDER BY releaseDate ASC",
+        'Newest': " ORDER BY releaseDate DESC"
+    }
+
+    if sortMethod in sort_mapping:
+        query += sort_mapping[sortMethod]
+
 
     # Page number
     offset = (pageNumber - 1) * 25
