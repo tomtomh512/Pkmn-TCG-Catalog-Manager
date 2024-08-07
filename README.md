@@ -1,8 +1,8 @@
 <h1> Pokémon TCG Catalog / Manager </h1>
 
-![img.png](pkmn_demo.png)
-
 A Pokémon TCG lookup created with React
+
+<img src="pkmn_demo.gif">
 
 <h2> Features </h2>
 <ul>
